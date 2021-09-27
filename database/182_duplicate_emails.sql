@@ -6,4 +6,4 @@ FROM
     
 GROUP BY Email
 
-HAVING SUM(1) > 1;
+HAVING COUNT(*) > 1;
