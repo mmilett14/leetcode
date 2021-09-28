@@ -13,10 +13,10 @@ class Solution(object):
         
         while start < end:
             
-            for i in range(0, end):
+            for i in range(start, end):
                 
-                if nums[i] + nums[i+1] == target:
-                    return i, i+1
+                if nums[start] + nums[i+1] == target:
+                    return start, i+1
             
             start += 1
             
