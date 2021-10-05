@@ -9,22 +9,25 @@ class Solution(object):
         :rtype: int
         """
         
-        word1_spot = 0
-        word2_spot = 0
+        limit = (3 * 10**4)+1
+        
+        found1 = limit
+        found2 = limit
+        distance = limit
+        
         
         for i in range(0, len(wordsDict)):
             
             if wordsDict[i] == word1:
-                word1_spot = i
+                found1 = i
+                
+                if abs(found1 - found2) < distance:
+                    distance = abs(found1 - found2)
             
             elif wordsDict[i] == word2:
-                word2_spot = i
-                     
-            distance = abs(word1_spot - word2_spot)
-            
-            if distance == 1:
-        
-                return distance
-        
+                found2 = i
+                
+                if abs(found1 - found2) < distance:
+                    distance = abs(found1 - found2)
+                    
         return distance
-        
