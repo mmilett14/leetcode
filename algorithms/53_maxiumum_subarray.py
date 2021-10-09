@@ -7,19 +7,17 @@ class Solution(object):
         :rtype: int
         """
         
-        sum_biggest = -float('inf')
-
-        size_window = 1
-
-        while size_window <= len(nums):
-
-            for i in range(0, len(nums)):
-
-                sum_window = sum(nums[i:i+size_window])
-
-                if sum_window > sum_biggest:
-                    sum_biggest = sum_window
-
-            size_window += 1
+        current_subarray = 0
+        max_subarray = -float('inf')
+        
+        for i in range(0, len(nums)):
             
-        return sum_biggest
+            current_subarray += nums[i]
+            
+            if current_subarray > max_subarray:
+                max_subarray = current_subarray
+            
+            if current_subarray < 0:
+                current_subarray = 0
+                
+        return max_subarray
