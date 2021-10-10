@@ -17,13 +17,12 @@ class Solution(object):
             
             int_list.append(roman_dict[s[i]])
         
-        
-        for i in range(1, len(int_list)):
+        for i in range(0, len(int_list)-1):
             
-            if (int_list[i] > int_list[i-1]) | (int_list[i] == int_list[i-1]):
+            if (int_list[i] > int_list[i+1]) | (int_list[i] == int_list[i+1]):
                 roman_as_int += int_list[i]
             
-            elif int_list[i] < int_list[i-1]:
+            elif int_list[i] < int_list[i+1]:
                 roman_as_int -= int_list[i]
         
         roman_as_int += int_list[len(int_list)-1]
