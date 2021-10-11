@@ -5,27 +5,24 @@ class Solution(object):
         :rtype: str
         """
         
-        final_prefix = ""
         current_prefix = ""
+        final_prefix = ""
+        prefix_counter = 1
         
-        k = 0
-        j = 1
-        
-        for i in range(0, len(strs)):
+        for i in range(0, len(strs[0])):
             
-            current_prefix = strs[0][k:k+1]
+            current_prefix = strs[0][i:i+1]
             
-            while j <= len(strs)-1:
+            for j in range(1, len(strs)):
                 
-                if strs[j][k:k+1] == current_prefix:
-                    j += 1
+                if strs[j][i:i+1] == current_prefix:
+                    prefix_counter += 1
             
-            if j == len(strs):
-                final_prefix += current_prefix 
-                k += 1
-                j = 1
+            if prefix_counter == len(strs):
+                final_prefix += current_prefix
+                prefix_counter = 1
             
             else:
                 return final_prefix
-        
+            
         return final_prefix
