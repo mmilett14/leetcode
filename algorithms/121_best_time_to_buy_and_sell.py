@@ -1,3 +1,5 @@
+# Need to address cases where the price is listed more than once
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         
@@ -18,7 +20,8 @@ class Solution:
             
             for j in range (0, len(prices)):
             
-                if price_dict[prices_desc[i]] > price_dict[prices_asc[j]]:
+                if (price_dict[prices_desc[i]] > price_dict[prices_asc[j]]) and ((prices_desc[i] - prices_asc[j]) > 0):
                     return (prices_desc[i] - prices_asc[j])
             
         return 0
+        
