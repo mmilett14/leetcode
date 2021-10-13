@@ -11,6 +11,8 @@ class Solution:
         
         price_dict = {}
         
+        profit = 0
+        
         for i in range(0, len(prices)):
             
             price_dict[prices[i]] = i
@@ -20,8 +22,9 @@ class Solution:
             
             for j in range (0, len(prices)):
             
-                if (price_dict[prices_desc[i]] > price_dict[prices_asc[j]]) and ((prices_desc[i] - prices_asc[j]) > 0):
-                    return (prices_desc[i] - prices_asc[j])
+                if (price_dict[prices_desc[i]] > price_dict[prices_asc[j]]) and ((prices_desc[i] - prices_asc[j]) > profit):
+                    profit = (prices_desc[i] - prices_asc[j])
             
-        return 0
+        return profit
+        
         
