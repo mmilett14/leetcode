@@ -1,29 +1,24 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
         
-        min_price = float('inf')
-        min_price_spot = 0
+        prices_asc = prices.copy()
+        prices_asc.sort(reverse=False)
         
-        max_price = float('inf')
-        max_price_spot = 0
+        prices_desc = prices.copy()
+        prices_desc.sort(reverse=True)
         
+        price_dict = {}
+        
+        for i in range(0, len(prices)):
+            
+            price_dict[prices[i]] = i
+            
         
         for i in range (0, len(prices)):
             
-            spot = i+1
+            for j in range (0, len(prices)):
             
-            if (prices[i] < min_price) & (spot < max_price_spot):
-                min_price = prices[i]
-                min_price_spot = spot
-                
-            elif (prices[i] > max_price) & (spot > min_price_spot):
-                max_price = prices[i]
-                max_price_spot = spot
-                
-        
-        return (max_price - min_price)
+                if price_dict[prices_desc[i]] > price_dict[prices_asc[j]]:
+                    return (prices_desc[i] - prices_asc[j])
             
+        return 0
