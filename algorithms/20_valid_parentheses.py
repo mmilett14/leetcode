@@ -16,10 +16,12 @@ class Solution(object):
             if char in parens:
                 stack.append(char)
             else:
-                if parens_rev[char] == stack[len(stack)-1]:
-                    stack.pop()
-                else:
+                if len(stack) == 0:
                     return False
+                elif parens_rev[char] != stack[len(stack)-1]:
+                    return False
+                else:
+                    stack.pop()
             
         if len(stack) == 0:
             return True
