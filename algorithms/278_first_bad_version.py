@@ -1,5 +1,4 @@
 # https://leetcode.com/problems/first-bad-version/
-
 # The isBadVersion API is already defined for you.
 # @param version, an integer
 # @return a bool
@@ -12,6 +11,26 @@ class Solution(object):
         :rtype: int
         """
         
-        for version in range(n+1):
-            if isBadVersion(version):
-                return version
+        left = 0
+        right = n
+        mid = (left + right) // 2
+        
+        bad_version = float('inf')
+        
+        while left <= right:
+            
+            mid = (left + right) // 2
+            
+            if isBadVersion(mid) == True:
+                
+                if isBadVersion(mid-1) == False:
+                    bad_version = mid
+                    return bad_version
+                
+                else:
+                    right = mid + 1
+            
+            else:
+                left = mid+1
+        
+        return bad_version
