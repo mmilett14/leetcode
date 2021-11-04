@@ -11,7 +11,7 @@ class Solution:
         
         nums.remove(0)
         
-        # 0s are not being appended to end of nums. Issue with zero_cnt... not sure what, though.
+        # 0s are not being appended to end of nums. Issue with zero_cnt - .remove appears to only remove 1st instance of 0
         
         for zero in range(zero_cnt):
             nums.append(0)
