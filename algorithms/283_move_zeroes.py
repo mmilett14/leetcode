@@ -4,14 +4,12 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         
-        nums_no_zeros = nums
-        nums_no_zeros.remove(0)
-        
+        nums_no_zeros = nums.copy()
+        nums_no_zeros[:] = [num for num in nums if num != 0]
+
         zero_cnt = len(nums) - len(nums_no_zeros)
-        
-        nums.remove(0)
-        
-        # 0s are not being appended to end of nums. Issue with zero_cnt - .remove appears to only remove 1st instance of 0
-        
+
+        nums = nums_no_zeros.copy()
+
         for zero in range(zero_cnt):
             nums.append(0)
